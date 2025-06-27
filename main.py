@@ -10,12 +10,17 @@ denominations = [
     ("1коп.", 1)
 ]
 
-for num in denominations:
-    if total_kop // num[1] > 0:
-        if total_kop//num[1] > 0:
-            count = 0
-            for i in range(total_kop//num[1]):
-                total_kop = total_kop - num[1]
-                count += 1
-            print(f"{num[0]} x {count}")
+# for num in denominations:
+#     if total_kop // num[1] > 0:
+#         if total_kop//num[1] > 0:
+#             count = 0
+#             for i in range(total_kop//num[1]):
+#                 total_kop = total_kop - num[1]
+#                 count += 1
+#             #print(f"{num[0]} x {count}")
 
+for name, value in denominations:
+    count = total_kop // value
+    total_kop %= value
+    if count > 0:
+        print(f"{name} x {count}")
