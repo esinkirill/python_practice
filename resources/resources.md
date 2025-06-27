@@ -11,7 +11,6 @@ Feel free to explore and expand this list over time.
 | Title | Author | Notes |
 |-------|--------|-------|
 |       |        |       |
-
 ---
 
 ## 🎥 YouTube Channels / Playlists
@@ -24,9 +23,9 @@ Feel free to explore and expand this list over time.
 
 ## 🌐 Websites & Docs
 
-| Name | Link | Description |
-|------|------|-------------|
-|   Complete Python 3 Bootcamp   | [GitHub Repo](https://github.com/Pierian-Data/Complete-Python-3-Bootcamp)     | Full course |
+| Name                       | Link | Description |
+|----------------------------|------|-------------|
+| Complete Python 3 Bootcamp | [GitHub Repo](https://github.com/Pierian-Data/Complete-Python-3-Bootcamp)     | Full course |
 
 ---
 
