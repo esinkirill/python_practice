@@ -1,44 +1,23 @@
 import random
+from collections import Counter
 
 students = ["Alice", "Bob", "Charlie", "Diana"]
 days = 9
 
 attended_day = []
+for _ in range(days):
+    present_count = random.randint(1, len(students))
+    today = random.sample(students, present_count)
+    attended_day.append(today)
 
-for day in range(days):
-    dayN = []
-    _students = students.copy()
-    for i in range(random.randint(1, len(students))):
-        vote = random.choice(_students)
-        if vote in dayN:
-            _students.pop(_students.index(vote))
-            vote = random.choice(_students)
-            dayN.append(vote)
-        else:
-            dayN.append(vote)
-    attended_day.append(dayN)
+attended_flat = [name for day in attended_day for name in day]
 
-attended_day_full = []
+result = Counter(attended_flat)
 
-for day_list in attended_day:
-    for student in day_list:
-        attended_day_full.append(student)
+for k in sorted(result):
+    print(f"{k}: был(а) на {result[k]} занятиях")
 
-result = {}
-
-for name in attended_day_full:
-    result[name] = result.get(name, 0) + 1
-
-for k, v in result.items():
-    if v <= 2 and v % 2 == 0:
-        print(f"{k} прогульщик был(а) всего {v} раза")
-    elif v <= 2 and v % 2 != 0:
-        print(f"{k} прогульщик был(а) всего {v} раз")
-    else:
-        print(f"{k} был(а) на {v} занятиях")
-
-total_days = len(attended_day)
-top_students = [name for name, count in result.items() if count == total_days]
+top_students = [name for name in students if result.get(name, 0) == days]
 if top_students:
     print("\nСамые ответственные:", ", ".join(top_students))
 else:
