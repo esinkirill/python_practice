@@ -2,7 +2,7 @@ import json
 import os
 import datetime
 
-FILENAME = "time_log.json"
+FILENAME = "C:\\Users\\Kirill\\PycharmProjects\\logs\\time_log.json"
 
 def load_sessions():
     if os.path.exists(FILENAME):
