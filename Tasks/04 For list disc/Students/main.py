@@ -35,7 +35,7 @@ for k, v in result.items():
     elif v <= 2 and v % 2 != 0:
         print(f"{k} прогульщик был(а) всего {v} раз")
     else:
-        print(f"{k} был(а) на занятиях {v} раза")
+        print(f"{k} был(а) на {v} занятиях")
 
 total_days = len(attended_day)
 top_students = [name for name, count in result.items() if count == total_days]
