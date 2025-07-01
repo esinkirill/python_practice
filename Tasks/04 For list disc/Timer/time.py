@@ -66,7 +66,7 @@ def main():
     last_2weeks = sum_sessions(sessions, days=14)
     print(f"\nВсего времени за всё время: {round(total / 3600, 2)} часов")
     print(f"В том числе за последние 2 недели: {round(last_2weeks / 3600, 2)} часов")
-
+    input("\nНажмите Enter для закрытия окна...")
 
 if __name__ == "__main__":
     main()
