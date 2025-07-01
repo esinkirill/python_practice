@@ -5,7 +5,6 @@ import datetime
 FILENAME = "time_log.json"
 
 def load_sessions():
-    """Загружает список всех сессий из файла."""
     if os.path.exists(FILENAME):
         with open(FILENAME, "r") as file:
             try:
@@ -14,23 +13,16 @@ def load_sessions():
                 return []
     return []
 
-
 def save_sessions(sessions):
-    """Сохраняет список сессий в файл."""
     with open(FILENAME, "w") as file:
         json.dump(sessions, file, indent=2)
 
-
 def format_time(seconds):
-    """Форматирует секунды в строку чч:мм:cc."""
     hours, remainder = divmod(seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
     return f"{int(hours):02}:{int(minutes):02}:{int(seconds):02}"
 
-
 def sum_sessions(sessions, days=None):
-    """Считает сумму времени всех сессий,
-    если days указаны — только за последние N дней."""
     now = datetime.datetime.now()
     total = 0
     for session in sessions:
@@ -40,25 +32,37 @@ def sum_sessions(sessions, days=None):
             total += session_time
     return total
 
-
 def main():
-    print("Таймер Python — отслеживание времени учёбы!\n")
+    print("Таймер Python — отслеживание времени учёбы!")
+    print("Во время сессии можно ставить паузу: напиши 'p' и нажми Enter.")
+    print("Чтобы закончить, просто нажми Enter (без буквы).")
 
     sessions = load_sessions()
-
     input("Нажмите Enter для начала работы...")
-    start = datetime.datetime.now()
 
-    input("Нажмите Enter, когда закончите: ")
-    end = datetime.datetime.now()
-    delta = end - start
+    total_active = 0
+    session_start = datetime.datetime.now()
 
-    seconds = delta.total_seconds()
-    print(f"\nВаша сессия: {format_time(seconds)}")
+    while True:
+        pause = input("\nВведи 'p' и Enter для паузы, или просто Enter для завершения: ")
+        if pause.lower() == "p":
+            pause_start = datetime.datetime.now()
+            input("Пауза. Нажмите Enter для продолжения...")
+            pause_end = datetime.datetime.now()
+            # Накопить только активное время!
+            total_active += (pause_start - session_start).total_seconds()
+            session_start = pause_end
+        else:
+            # Завершаем, учитываем финальный отрезок
+            total_active += (datetime.datetime.now() - session_start).total_seconds()
+            break
 
+    print(f"\nВаша сессия: {format_time(total_active)}")
+
+    # Сохраняем новую сессию
     sessions.append({
-        "date": start.strftime("%Y-%m-%d %H:%M:%S"),
-        "seconds": seconds
+        "date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "seconds": total_active
     })
     save_sessions(sessions)
 
@@ -66,6 +70,7 @@ def main():
     last_2weeks = sum_sessions(sessions, days=14)
     print(f"\nВсего времени за всё время: {round(total / 3600, 2)} часов")
     print(f"В том числе за последние 2 недели: {round(last_2weeks / 3600, 2)} часов")
+
     input("\nНажмите Enter для закрытия окна...")
 
 if __name__ == "__main__":
