@@ -49,6 +49,7 @@ hash_table = [[] for _ in range(TABLE_SIZE)]
 def put(key, value):
     h = hash(key)
     index = h % TABLE_SIZE
+    print(index)
     bucket = hash_table[index]
     for i, (k, v) in enumerate(bucket):
         if k == key:
