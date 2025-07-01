@@ -46,19 +46,23 @@ Winner: Победитель
 
 **Вход**
 ```
-Alice
-Bob
-Alice
-Charlie
-Bob
-Bob
-Alice
+Bob + 1 голос
+Bob + 1 голос
+Alice + 1 голос
+Bob + 1 голос
+Charlie + 1 голос
+Alice + 1 голос
+Alice + 1 голос
+Bob + 1 голос
+Bob + 1 голос
+Charlie + 1 голос
 ```
 
 **Вывод**
 ```
-Alice: 3
-Bob: 3
-Charlie: 1
-Winner: Alice
+Bob: 5 votes
+Alice: 3 votes
+Charlie: 2 votes
+
+Winner: Bob
 ```
