@@ -2,7 +2,7 @@ import random
 import time
 
 candidates = ["Alice", "Bob", "Charlie"]
-num_votes = 10
+num_votes = 100
 counts = {}
 
 for i in range(num_votes):
