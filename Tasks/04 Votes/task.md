@@ -44,7 +44,13 @@ Winner: Победитель
 
 ## Пример
 
-**Вход**
+### **Вход**
+```python
+candidates = ["Alice", "Bob", "Charlie"]
+```
+
+### Randomizer: 
+
 ```
 Bob + 1 голос
 Bob + 1 голос
@@ -58,7 +64,7 @@ Bob + 1 голос
 Charlie + 1 голос
 ```
 
-**Вывод**
+### **Вывод**
 ```
 Bob: 5 votes
 Alice: 3 votes
