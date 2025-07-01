@@ -26,7 +26,7 @@ Feel free to explore and expand this list over time.
 | Name                       | Link                                                                            | Description     |
 |----------------------------|---------------------------------------------------------------------------------|-----------------|
 | Complete Python 3 Bootcamp | [GitHub Repo](https://github.com/Pierian-Data/Complete-Python-3-Bootcamp)       | Full course     |
-| Python Tutoria             | [Tutorials point](https://www.tutorialspoint.com/python/python_hello_world.htm) | Advanced course |
+| Python Tutorial            | [Tutorials point](https://www.tutorialspoint.com/python/python_hello_world.htm) | Advanced course |
 ---
 
 ## 🧩 Practice Platforms
