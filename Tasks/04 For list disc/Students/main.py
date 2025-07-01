@@ -22,3 +22,9 @@ if top_students:
     print("\nСамые ответственные:", ", ".join(top_students))
 else:
     print("\nНет студентов, кто был на всех занятиях")
+
+skippers = [name for name in students if result.get(name, 0) <= 2]
+if skippers:
+    print("Прогульщики:", ", ".join(skippers))
+else:
+    print("Нет явных прогульщиков!")
