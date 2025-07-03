@@ -1,4 +1,10 @@
 from collections import defaultdict
+from dataclasses import dataclass
+
+@dataclass
+class CharCounts:
+    letters: dict
+    punctuation: dict
 
 def read_text(path):
     with open(path, 'r', encoding='utf-8') as f:
@@ -14,7 +20,7 @@ def count_characters(text):
         else:
             punctuation[char] += 1
 
-    return dict(letters), dict(punctuation)
+    return CharCounts(dict(letters), dict(punctuation))
 
 def print_sorted_frequency(title, freq_dict, top=None):
     sorted_items = sorted(freq_dict.items(), key=lambda x: x[1], reverse=True)
@@ -32,11 +38,11 @@ def main():
     if not text:
         return
 
-    letters, punctuation = count_characters(text)
+    result = count_characters(text)
 
-    print_sorted_frequency("Буквы", letters)
-    print_sorted_frequency("Знаки препинания", punctuation)
-    print_sorted_frequency("Топ-10 символов", letters, top=10)
+    print_sorted_frequency("Буквы", result.letters)
+    print_sorted_frequency("Знаки препинания", result.punctuation)
+    print_sorted_frequency("Топ-10 символов", result.letters, top=10)
 
 if __name__ == "__main__":
     main()
