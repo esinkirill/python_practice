@@ -34,6 +34,7 @@ def math_with_num(numbers: List[float]) -> None:
     print("-" * 30)
 
 def main() -> None:
+
     text = multi_input()
     numbers = clean_and_extract_numbers(text)
     math_with_num(numbers)
